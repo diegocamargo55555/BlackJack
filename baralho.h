@@ -27,14 +27,6 @@ cartas *PUSH(cartas *L, int x) {
 	return (L);
 }
 
-void gerar_baralhos(cartas* baralho){
-    for (int i = 0; i < 50; i++)
-    {
-        int n = rand() % 9 + 1 ;
-        baralho = PUSH(baralho, n);
-        //cout << n << " " ;
-    }
-}
 
 void imprimePilha(cartas* baralho) {
 	cartas *P;

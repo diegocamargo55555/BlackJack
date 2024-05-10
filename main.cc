@@ -10,15 +10,12 @@ int main()
     
     cartas* baralho;
     inicializaLista(baralho);
-    int numero = 0;
-
-    //gerar_baralhos(baralho);
 
     for (int i = 0; i < 52; i++)
     {
         int n = rand() % 10 + 1 ;
         baralho = PUSH(baralho, n);
-        cout << n << " " ;
+        //cout << n << " " ;
     }
     
     imprimePilha(baralho);
