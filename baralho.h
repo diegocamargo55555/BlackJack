@@ -5,8 +5,9 @@ using namespace std;
 
 struct cartas
 {
-    int numero;
-    string nipe;
+    string mostrar;
+    int valor;
+    string naipes;
     cartas *link ;
 };
 
@@ -18,7 +19,7 @@ cartas *PUSH(cartas *L, int x) {
 	cartas *N;
 
 	N = new cartas;
-	N->numero = x;
+	N->valor = x;
 
     N->link = L;
 	
@@ -29,8 +30,9 @@ cartas *PUSH(cartas *L, int x) {
 void gerar_baralhos(cartas* baralho){
     for (int i = 0; i < 50; i++)
     {
-        int Numero = rand() % 9 + 1 ;
-        PUSH(baralho, Numero);
+        int n = rand() % 9 + 1 ;
+        baralho = PUSH(baralho, n);
+        //cout << n << " " ;
     }
 }
 
@@ -40,7 +42,7 @@ void imprimePilha(cartas* baralho) {
 	
 	printf("\n Imprime PILHA: \n");	
 	while(P != NULL) {
-		cout << P->numero << " ";	
+		cout << P->valor << " ";	
 		P = P->link;
 	}	
 }
