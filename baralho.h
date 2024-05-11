@@ -27,14 +27,18 @@ cartas *PUSH(cartas *L, int x) {
 	return (L);
 }
 
-void gerar_baralhos(cartas* baralho){
-    for (int i = 0; i < 50; i++)
-    {
-        int n = rand() % 9 + 1 ;
-        baralho = PUSH(baralho, n);
-        //cout << n << " " ;
-    }
+cartas *strg_PUSH(cartas *L, string x) {
+	cartas *N;
+
+	N = new cartas;
+	N->naipes = x;
+
+    N->link = L;
+	
+	L = N;
+	return (L);
 }
+
 
 void imprimePilha(cartas* baralho) {
 	cartas *P;
@@ -43,6 +47,17 @@ void imprimePilha(cartas* baralho) {
 	printf("\n Imprime PILHA: \n");	
 	while(P != NULL) {
 		cout << P->valor << " ";	
+		P = P->link;
+	}	
+}
+
+void puts(cartas* baralho) {
+	cartas *P;
+	P = baralho;	
+	
+	printf("\n Imprime PILHA: \n");	
+	while(P != NULL) {
+		cout << P->valor << " " << P-> naipes << endl;
 		P = P->link;
 	}	
 }

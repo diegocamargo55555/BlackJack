@@ -10,16 +10,55 @@ int main()
     
     cartas* baralho;
     inicializaLista(baralho);
-    int numero = 0;
 
-    //gerar_baralhos(baralho);
-
+    string naipe;
+    int n;
+    /*
     for (int i = 0; i < 52; i++)
     {
         int n = rand() % 10 + 1 ;
         baralho = PUSH(baralho, n);
-        cout << n << " " ;
-    }
+        //cout << n << " " ;
+    }*/
     
-    imprimePilha(baralho);
+    for (int i = 0; i < 4; i++)
+    {
+        if (i == 0)
+        {
+            naipe = "ouros";
+        }else if (i == 1)
+        {
+            naipe = "paus";
+        }else if (i ==2)
+        {
+            naipe = "espadas";
+        }else if (i == 3)
+        {
+            naipe = "copas";
+        }
+        for (int j = 1; j < 14; j++)
+        {
+            baralho = strg_PUSH(baralho, naipe);
+            if (j > 10)
+            {
+                n = 10;
+                baralho = PUSH(baralho, n);
+            }else
+                baralho = PUSH(baralho, j);
+        }
+    }
+    /*
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 1; j < 10; j++)
+        {
+            baralho = PUSH(baralho, j);
+        }
+    }
+    */
+    
+
+    
+    
+    puts(baralho);
 }
