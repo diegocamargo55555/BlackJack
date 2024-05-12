@@ -5,59 +5,21 @@ using namespace std;
 
 struct cartas
 {
-    string mostrar;
+    string naipe;
     int valor;
-    string naipes;
-    cartas *link ;
+};
+struct jogador
+{
+	string nome;
+	int mao;
+};
+struct baralho
+{
+    cartas carta;
+    baralho *link;
 };
 
-cartas *inicializaLista(cartas *L) {
+
+baralho *inicializaLista(baralho *L) {
 	return NULL;
 };
-
-cartas *PUSH(cartas *L, int x) {
-	cartas *N;
-
-	N = new cartas;
-	N->valor = x;
-
-    N->link = L;
-	
-	L = N;
-	return (L);
-}
-
-cartas *strg_PUSH(cartas *L, string x) {
-	cartas *N;
-
-	N = new cartas;
-	N->naipes = x;
-
-    N->link = L;
-	
-	L = N;
-	return (L);
-}
-
-
-void imprimePilha(cartas* baralho) {
-	cartas *P;
-	P = baralho;	
-	
-	printf("\n Imprime PILHA: \n");	
-	while(P != NULL) {
-		cout << P->valor << " ";	
-		P = P->link;
-	}	
-}
-
-void puts(cartas* baralho) {
-	cartas *P;
-	P = baralho;	
-	
-	printf("\n Imprime PILHA: \n");	
-	while(P != NULL) {
-		cout << P->valor << " " << P-> naipes << endl;
-		P = P->link;
-	}	
-}

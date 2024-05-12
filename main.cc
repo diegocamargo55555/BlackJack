@@ -8,8 +8,9 @@ int main()
 {
     srand(time(nullptr));
     
-    cartas* baralho;
-    inicializaLista(baralho);
+    carta cartas[52];
+    baralho *deck;
+    inicializaLista(deck);
 
     string naipe;
     int n;
@@ -38,13 +39,15 @@ int main()
         }
         for (int j = 1; j < 14; j++)
         {
-            baralho = strg_PUSH(baralho, naipe);
             if (j > 10)
             {
                 n = 10;
-                baralho = PUSH(baralho, n);
-            }else
-                baralho = PUSH(baralho, j);
+                cartas[i].valor = n;
+            }else{
+                cartas[i].valor = i;
+                cartas[i].naipe = naipe;
+            }
+                
         }
     }
     /*
