@@ -74,37 +74,21 @@ int main()
         cout << cartas[i].naipe << " " << cartas[i].valor << endl;
     }
     
-    int n_jogadores = 2;
+    int d = 0, n_jogadores;
     cout << "/--------------------------------------/ " << endl;
-    //cin >> n_jogadores;
+    cin >> n_jogadores;
     jogador player[2] , dealer;
-    player[0].nome = "luminous";
-    player[1].nome = "Gabi";
-
-    for (int i = 0; i < 2; i++)
-    {
-        while (n_jogadores--)
-        {
-            compra(deck, &player[n_jogadores]);
-            deck = pop(deck);    
-        }    
-        compra(deck, &dealer);
-        deck = pop(deck);
-    }
     
-
+    compra(deck, &(player[0].valor_mao), &(player[0].naipe_mao) );
+    deck = pop(deck);
     
+    compra(deck, &(player[1].valor_mao), &(player[1].naipe_mao) );
+    deck = pop(deck);
     
-    
-    print_mao(player[0]);
-    print_mao(player[1]);
-    print_mao(dealer);
-
-    
+    cout << player[0].valor_mao << player[0].naipe_mao << endl ;
+    cout << player[1].valor_mao << player[1].naipe_mao << endl ;
     
     //puts(deck);
     
     
 }
-
-

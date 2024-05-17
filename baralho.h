@@ -10,8 +10,9 @@ struct carta
 };
 struct jogador
 {
-	carta mao;
 	string nome;
+	int valor_mao;
+	string naipe_mao;
 };
 struct baralho
 {
@@ -19,11 +20,6 @@ struct baralho
     string nipe;
     baralho *link;
 };
-
-void print_mao(jogador j)
-{
-	cout << j.nome << ": " << j.mao.valor << j.mao.naipe << endl;
-}
 
 void troca(int *v1, int *v2, string *s1, string *s2  )
 {
@@ -78,9 +74,9 @@ void puts(baralho* dek) {
 	}	
 }
 
-void compra(baralho *D, jogador *j)
+void compra(baralho *D, int *cart, string *nip)
 {
-	(*j).mao.valor = D->valor;
-	(*j).mao.naipe = D->nipe;
+	*cart = D->valor;
+	*nip = D->nipe;
 	
 }
