@@ -71,11 +71,10 @@ void compra(baralho *D, jogador *j, int i)
 
 void print_mao(jogador j, int size)
 {
-    int tot = 0;
     for (int i = 0; i < size; i++)
     {
         cout << j.nome << ": " << j.mao[i].valor << j.mao[i].naipe << endl; 
     }
-	cout <<"total: " << j.total << endl;
+	cout << "total: " << j.total << endl << endl;
     
 }

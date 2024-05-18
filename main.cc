@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <cstdlib>
 #include "baralho.h"
 using namespace std;
 
@@ -15,8 +16,6 @@ int main()
     int n, k = 0, temp, rand1, rand2;
     
     inicializaLista(deck);
-
-    
     
     // gera as cartas
     for (int i = 0; i < 4; i++)
@@ -47,6 +46,7 @@ int main()
             }
         }
     }
+
     // randomiza
     for (int i = 0; i < 104; i++)
     {
@@ -62,56 +62,65 @@ int main()
         cartas[rand1].valor = cartas[rand2].valor;
         cartas[rand2].valor = temp;
     }
+
     for (int i = 0; i < 52; i++)
     {
         deck = PUSH(deck, cartas[i].valor, cartas[i].naipe);
     }    
-    cout << "/--------------------------------------/ " << endl;
-    //cin >> n_jogadores;
-    int n_jogadores = 3;
-    jogador player[n_jogadores] , dealer;
-    dealer.total = 0;
 
-    for (int i = 0; i < n_jogadores; i++)
+    
+    int n_jogadores;
+    cout << "Quantidade de jogadores? ";
+    cin >> n_jogadores;
+    n_jogadores += 1;
+    jogador player[n_jogadores];
+    player[n_jogadores-1].nome = "Dealer";
+    player[n_jogadores-1].total = 0;
+
+    for (int i = 0; i < n_jogadores - 1; i++)
     {
         player[i].total = 0;
+        cout << "Qual o nome do player " << i+1 << "? ";
+        cin >> player[i].nome;
     }
-    
-    player[0].nome = "luminous";
-    player[1].nome = "Gabi";
-    dealer.nome = "Dealer";
 
     for (int i = 0; i < 2; i++)
     {
         int nj = n_jogadores;
         while (nj--)
         {
-            cout << endl << n << endl;
             compra(deck, &player[nj], i);
             deck = pop(deck);    
         }    
-        compra(deck, &dealer, i);
-        deck = pop(deck);
     }
-    
-    print_mao(dealer, 2);
-    print_mao(player[0], 2);
-    print_mao(player[1], 2);
 
+    char resposta;
 
-    int i =0;
-
-    while (dealer.total < 17)
+    for (int i = 0; i < n_jogadores; i++)
     {
-        while (player[0].total < 21 and player[0].acao != 'p')
+        system("cls");
+        print_mao(player[i], 2);
+        cout << "Player " << player[i].nome << " ao terminar pressione qualquer tecla, em seguida 'enter' " << endl;
+        cin >> resposta; 
+    }
+
+
+    while (player[n_jogadores-1].total < 17)
+    {
+        for (int i = 0; player[i].total < 21 && player[i].acao != 'p' && i < n_jogadores; i++)
         {
-            cout << player[0].nome << "deseja para(p) ou comprar(c): ";  
-            cin >> player[0].acao;
+            print_mao(player[i], 3);
+            cout << player[i].nome << "deseja para(p) ou comprar(c): ";  
+            cin >> player[i].acao;
+            if (player[i].acao == 'c')
+            {
+                
+            }
+            
         }
         
     }
     
-
 
     
 
@@ -125,4 +134,3 @@ int main()
     
     
 }
-
