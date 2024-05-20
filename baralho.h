@@ -3,23 +3,37 @@
 #include <ctime>
 using namespace std;
 
-struct cartas
+struct carta
 {
-    string mostrar;
+    string naipe;
     int valor;
-    string naipes;
-    cartas *link ;
+};
+struct jogador
+{
+	char acao;
+	carta mao[22];
+	int total;
+	string nome;
+	int vitorias;
+	int perdas;
+};
+struct baralho
+{
+    int valor;
+    string nipe;
+    baralho *link;
 };
 
-cartas *inicializaLista(cartas *L) {
+baralho *inicializaLista(baralho *L) {
 	return NULL;
 };
 
-cartas *PUSH(cartas *L, int x) {
-	cartas *N;
+baralho *PUSH(baralho *L, int v, string x) {
+	baralho *N;
 
-	N = new cartas;
-	N->valor = x;
+	N = new baralho;
+	N->valor = v;
+	N->nipe = x;
 
     N->link = L;
 	
@@ -27,14 +41,50 @@ cartas *PUSH(cartas *L, int x) {
 	return (L);
 }
 
+baralho *pop(baralho *l)
+{
+	baralho *temp;
+	if (l != nullptr)
+	{
+		temp = l;
+		l = l->link;
+		delete temp;
+	}
+	return(l);		
+}
 
-void imprimePilha(cartas* baralho) {
-	cartas *P;
-	P = baralho;	
-	
-	printf("\n Imprime PILHA: \n");	
+void puts(baralho* dek) {
+	baralho *P;
+	P = dek;
+
 	while(P != NULL) {
-		cout << P->valor << " ";	
+		printf("carta : %d %s \n", P->valor, (P->nipe).c_str());
 		P = P->link;
 	}	
+}
+
+
+void compra(baralho *D, jogador *j, int i)
+{
+	(*j).mao[i].valor = D->valor;
+	(*j).mao[i].naipe = D->nipe;
+	(*j).total += D->valor;
+	
+}
+
+void print_mao(jogador j, int size)
+{
+    for (int i = 0; i < size; i++)
+    {
+        cout << j.nome << ": " << j.mao[i].valor << j.mao[i].naipe << endl; 
+    }
+	cout << "total: " << j.total << endl << endl;
+    
+}
+
+bool desejaComprarMais(jogador& player) {
+    char resposta;
+    cout << player.nome << ", deseja comprar mais uma carta? (s/n): ";
+    cin >> resposta;
+    return resposta == 's' || resposta == 'S';
 }
